@@ -25,7 +25,7 @@ const app = express();
 
 const allowedOrigins = [
   "http://localhost:3000",
-  "http://localhost:5173"
+  "http://localhost:5173",
 ];
 
 // ===============================
@@ -56,7 +56,7 @@ app.use(
       );
     },
 
-    credentials: true
+    credentials: true,
   })
 );
 
@@ -67,7 +67,7 @@ app.use(
 
 app.use(
   express.json({
-    limit: "1mb"
+    limit: "1mb",
   })
 );
 
@@ -135,7 +135,7 @@ app.use(
 
 app.get("/", (req, res) => {
   res.status(200).json({
-    message: "CRM API is running"
+    message: "CRM API is running",
   });
 });
 
@@ -145,7 +145,7 @@ app.get("/", (req, res) => {
 
 app.use((req, res) => {
   res.status(404).json({
-    message: "Route not found"
+    message: "Route not found",
   });
 });
 
@@ -161,7 +161,7 @@ app.use(errorMiddleware);
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(
     `Server running on port ${PORT}`
   );
