@@ -26,6 +26,8 @@ const app = express();
 const allowedOrigins = [
   "http://localhost:3000",
   "http://localhost:5173",
+  "https://thoptv.in",
+  "https://www.thoptv.in",
 ];
 
 // ===============================
@@ -51,9 +53,7 @@ app.use(
         return callback(null, true);
       }
 
-      return callback(
-        new Error("Not allowed by CORS")
-      );
+      return callback(new Error("Not allowed by CORS"));
     },
 
     credentials: true,
@@ -88,46 +88,25 @@ connectDB();
 // ===============================
 
 // Auth Routes
-app.use(
-  "/api/auth",
-  authRoutes
-);
+app.use("/api/auth", authRoutes);
 
 // Customer Routes
-app.use(
-  "/api/customers",
-  customerRoutes
-);
+app.use("/api/customers", customerRoutes);
 
 // Ticket Routes
-app.use(
-  "/api/tickets",
-  ticketRoutes
-);
+app.use("/api/tickets", ticketRoutes);
 
 // Employee Routes
-app.use(
-  "/api/employees",
-  employeeRoutes
-);
+app.use("/api/employees", employeeRoutes);
 
 // Dashboard Routes
-app.use(
-  "/api/dashboard",
-  dashboardRoutes
-);
+app.use("/api/dashboard", dashboardRoutes);
 
 // Notification Routes
-app.use(
-  "/api/notifications",
-  notificationRoutes
-);
+app.use("/api/notifications", notificationRoutes);
 
 // Activity Log Routes
-app.use(
-  "/api/activity-logs",
-  activityLogRoutes
-);
+app.use("/api/activity-logs", activityLogRoutes);
 
 // ===============================
 // HOME ROUTE
@@ -162,7 +141,5 @@ app.use(errorMiddleware);
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, "0.0.0.0", () => {
-  console.log(
-    `Server running on port ${PORT}`
-  );
+  console.log(`Server running on port ${PORT}`);
 });
