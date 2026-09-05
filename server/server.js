@@ -20,6 +20,15 @@ dotenv.config();
 const app = express();
 
 // ===============================
+// RENDER / PROXY CONFIG
+// ===============================
+
+// Render sits behind a reverse proxy.
+// Trust the first proxy so express-rate-limit
+// can correctly read the client's forwarded IP.
+app.set("trust proxy", 1);
+
+// ===============================
 // BASIC SECURITY CONFIG
 // ===============================
 
